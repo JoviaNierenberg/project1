@@ -12,7 +12,7 @@ def transcribe(seq: str) -> str:
             text = text.replace(key, val)
         return text
     # create dictionary with text and replacement text, use interim letters P & Q so that C and G are properly replaced
-    d = { "A":"U", "T":"A", "G":"P", "C":"Q", "P:C"}
+    d = { "A":"U", "T":"A", "G":"P", "C":"Q", "P":"C", "Q":"G" }
     # return result of running replace_all on the sequence and the dictionary
     return replace_all(seq, d)
 
