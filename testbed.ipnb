@@ -3,7 +3,7 @@
   {
    "cell_type": "code",
    "execution_count": 34,
-   "id": "41c96303",
+   "id": "b290b8fa",
    "metadata": {},
    "outputs": [
     {
@@ -52,7 +52,7 @@
   {
    "cell_type": "code",
    "execution_count": 43,
-   "id": "358fc945",
+   "id": "8adc702d",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -221,7 +221,7 @@
   {
    "cell_type": "code",
    "execution_count": 44,
-   "id": "93243b62",
+   "id": "658ba3b2",
    "metadata": {},
    "outputs": [
     {
@@ -437,13 +437,35 @@
     "    seq = record[1]\n",
     "    print(seq)\n",
     "    trans_seq = transcribe(seq)\n",
-    "    print(trans_seq)"
+    "    print(trans_seq)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "253efbbd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA\n"
+     ]
+    }
+   ],
+   "source": [
+    "for record in FastaParser_instance:\n",
+    "    seq = record[1]\n",
+    "    break\n",
+    "print(seq)"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 45,
-   "id": "8ca0139b",
+   "id": "f238ad65",
    "metadata": {},
    "outputs": [
     {
@@ -562,7 +584,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "017ef3c5",
+   "id": "199dd26b",
    "metadata": {},
    "outputs": [],
    "source": []

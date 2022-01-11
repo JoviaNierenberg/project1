@@ -28,7 +28,11 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    pass
+    FastaParser_instance = FastaParser("data/test.fa")
+    for record in FastaParser_instance:
+        seq = record[1]
+        break # only want the first sequence
+    assert seq == "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA"
 
 
 def test_FastqParser():
@@ -38,4 +42,8 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-    pass
+    FastqParser_instance = FastqParser("data/test.fq")
+    for record in FastqParser_instance:
+        seq = record[1]
+        break # only want the first sequence
+    assert seq == "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG"
