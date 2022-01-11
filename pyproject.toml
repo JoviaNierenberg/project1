@@ -18,6 +18,5 @@ dynamic = ["version", "description"]
 dependencies = [
 	'io',
     'typing',
-    'pytest',
-    'seqparser'
+    'pytest'
 ]
