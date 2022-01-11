@@ -2,52 +2,57 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 7,
-   "id": "3d4f4c7d",
+   "execution_count": 34,
+   "id": "e0d42a52",
    "metadata": {},
    "outputs": [
     {
-     "data": {
-      "text/plain": [
-       "'GAUUCAAUCA'"
-      ]
-     },
-     "execution_count": 7,
-     "metadata": {},
-     "output_type": "execute_result"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "('>seq0', 'TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA')\n",
+      "2\n",
+      "198\n"
+     ]
+    },
+    {
+     "ename": "ValueError",
+     "evalue": "I/O operation on closed file.",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-34-93e92d0a854c>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m     18\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mlen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mf_obj\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreadlines\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     19\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 20\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mlen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mf_obj\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mreadlines\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m: I/O operation on closed file."
+     ]
     }
    ],
    "source": [
-    "def transcribe(seq: str) -> str:\n",
-    "    \"\"\"\n",
-    "    transcribes DNA to RNA by generating\n",
-    "    the complement sequence with T -> U replacement\n",
-    "    \"\"\"\n",
-    "    # replacement function\n",
-    "    def replace_all(text, dictionary):\n",
-    "        for key, val in dictionary.items():\n",
-    "            text = text.replace(key, val)\n",
-    "        return text\n",
-    "    # create dictionary with text and replacement text\n",
-    "    d = { \"A\":\"U\", \"T\":\"A\", \"G\":\"P\", \"C\":\"Q\", \"P\":\"C\", \"Q\":\"G\"}\n",
-    "    # return result of running replace_all on the sequence and the dictionary\n",
-    "    return replace_all(seq, d)\n",
+    "import io\n",
+    "from typing import Tuple, Union\n",
     "\n",
-    "def reverse_transcribe(seq: str) -> str:\n",
-    "    \"\"\"\n",
-    "    transcribes DNA to RNA then reverses\n",
-    "    the strand\n",
-    "    \"\"\"\n",
-    "    transcribed = transcribe(seq)\n",
-    "    return transcribed[::-1]\n",
+    "def __init__(self, filename: str):\n",
+    "    self.filename = filename\n",
     "\n",
-    "reverse_transcribe(\"TGATTGAATC\")"
+    "def get_record(f_obj):\n",
+    "    first_lines = [next(f_obj) for x in range(2)] # extract first two lines\n",
+    "    return tuple(map(str.rstrip, first_lines)) # remove '\\n' from the end and make tuple\n",
+    "\n",
+    "with open(\"data/test.fa\", \"r\") as f_obj:\n",
+    "    #print(f_obj.read())\n",
+    "    first_lines = [next(f_obj) for x in range(2)]\n",
+    "    remove_slash_n = tuple(map(str.rstrip, first_lines))\n",
+    "    tuple_len = len(remove_slash_n)\n",
+    "    print(remove_slash_n)\n",
+    "    print(tuple_len)\n",
+    "    print(len(f_obj.readlines()))\n",
+    "    f_obj =\n"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "c03d0eb2",
+   "id": "117c53cc",
    "metadata": {},
    "outputs": [],
    "source": []
